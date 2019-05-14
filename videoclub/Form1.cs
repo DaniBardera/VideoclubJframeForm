@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace videoclub
 {
-    public partial class Form1 : Form
+    public partial class Form1 : Login
     {
         public Form1()
         {
