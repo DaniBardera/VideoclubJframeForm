@@ -16,8 +16,11 @@ namespace videoclub
         public Login()
         {
             InitializeComponent();
+            //Foco en campo usuario
+            this.ActiveControl = textBox1;
         }
-        private void button1_Click_1(object sender, EventArgs e)
+
+        private void login()
         {
             MySqlConnection conexion = new ConexionBBDD().conecta();
 
@@ -46,17 +49,34 @@ namespace videoclub
                     // creamos una nueva ventana del tipo VentanaPrincipal
                     VentanaInicio ventana = new VentanaInicio();
                     ventana.Visible = true;
+                    CenterToScreen();
 
-                    MessageBox.Show("Acceso Correcto", "USUARIO OK");
-                    this.Visible = false; //Oculta la ventana de login
+                    var mensajeBienvenida = MessageBox.Show("Acceso Correcto", "USUARIO OK");
+                    CenterToScreen();
                 }
 
                 else
                 {
                     MessageBox.Show("Accceso Denegado", "USUARIO O CONTRASEÑA ERRONEOS");
+                    CenterToScreen();
                 }
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            login();
+        }
+
+        private void textBox2_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                login();
+            }
+        }
+
+        
     }
 }
     
