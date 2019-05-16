@@ -50,8 +50,14 @@
             this.btnMostrarAlquileres = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.desplegableSociosVideoclub = new System.Windows.Forms.ComboBox();
+            this.panelAlquileres = new System.Windows.Forms.Panel();
+            this.cerrarAlquileres = new System.Windows.Forms.Button();
+            this.dataGridViewAlquileres = new System.Windows.Forms.DataGridView();
+            this.labelAlquileres = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panelInfoPeli.SuspendLayout();
+            this.panelAlquileres.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAlquileres)).BeginInit();
             this.SuspendLayout();
             // 
             // desplegableGeneros
@@ -82,7 +88,7 @@
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(457, 119);
+            this.label1.Location = new System.Drawing.Point(457, 161);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(146, 23);
             this.label1.TabIndex = 3;
@@ -91,7 +97,7 @@
             // 
             // usuarioEntrar
             // 
-            this.usuarioEntrar.Location = new System.Drawing.Point(457, 145);
+            this.usuarioEntrar.Location = new System.Drawing.Point(457, 187);
             this.usuarioEntrar.Name = "usuarioEntrar";
             this.usuarioEntrar.Size = new System.Drawing.Size(146, 32);
             this.usuarioEntrar.TabIndex = 4;
@@ -102,7 +108,7 @@
             // label2
             // 
             this.label2.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(457, 196);
+            this.label2.Location = new System.Drawing.Point(457, 241);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(146, 35);
             this.label2.TabIndex = 5;
@@ -111,7 +117,7 @@
             // 
             // nuevoUsuarioEntrar
             // 
-            this.nuevoUsuarioEntrar.Location = new System.Drawing.Point(457, 234);
+            this.nuevoUsuarioEntrar.Location = new System.Drawing.Point(457, 279);
             this.nuevoUsuarioEntrar.Name = "nuevoUsuarioEntrar";
             this.nuevoUsuarioEntrar.Size = new System.Drawing.Size(146, 31);
             this.nuevoUsuarioEntrar.TabIndex = 6;
@@ -239,6 +245,7 @@
             this.btnMostrarAlquileres.TabIndex = 10;
             this.btnMostrarAlquileres.Text = "Mostrar Alquileres";
             this.btnMostrarAlquileres.UseVisualStyleBackColor = true;
+            this.btnMostrarAlquileres.Click += new System.EventHandler(this.btnMostrarAlquileres_Click);
             // 
             // label7
             // 
@@ -258,6 +265,50 @@
             this.desplegableSociosVideoclub.Size = new System.Drawing.Size(282, 21);
             this.desplegableSociosVideoclub.TabIndex = 11;
             // 
+            // panelAlquileres
+            // 
+            this.panelAlquileres.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.panelAlquileres.Controls.Add(this.labelAlquileres);
+            this.panelAlquileres.Controls.Add(this.dataGridViewAlquileres);
+            this.panelAlquileres.Controls.Add(this.cerrarAlquileres);
+            this.panelAlquileres.Location = new System.Drawing.Point(11, 92);
+            this.panelAlquileres.Name = "panelAlquileres";
+            this.panelAlquileres.Size = new System.Drawing.Size(592, 328);
+            this.panelAlquileres.TabIndex = 12;
+            // 
+            // cerrarAlquileres
+            // 
+            this.cerrarAlquileres.Location = new System.Drawing.Point(450, 3);
+            this.cerrarAlquileres.Name = "cerrarAlquileres";
+            this.cerrarAlquileres.Size = new System.Drawing.Size(139, 36);
+            this.cerrarAlquileres.TabIndex = 0;
+            this.cerrarAlquileres.Text = "Cerrar";
+            this.cerrarAlquileres.UseVisualStyleBackColor = true;
+            this.cerrarAlquileres.Click += new System.EventHandler(this.cerrarAlquileres_Click);
+            // 
+            // dataGridViewAlquileres
+            // 
+            this.dataGridViewAlquileres.AllowUserToAddRows = false;
+            this.dataGridViewAlquileres.AllowUserToDeleteRows = false;
+            this.dataGridViewAlquileres.AllowUserToOrderColumns = true;
+            this.dataGridViewAlquileres.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewAlquileres.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewAlquileres.Location = new System.Drawing.Point(5, 42);
+            this.dataGridViewAlquileres.Name = "dataGridViewAlquileres";
+            this.dataGridViewAlquileres.ReadOnly = true;
+            this.dataGridViewAlquileres.Size = new System.Drawing.Size(584, 283);
+            this.dataGridViewAlquileres.TabIndex = 1;
+            // 
+            // labelAlquileres
+            // 
+            this.labelAlquileres.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelAlquileres.Location = new System.Drawing.Point(5, 3);
+            this.labelAlquileres.Name = "labelAlquileres";
+            this.labelAlquileres.Size = new System.Drawing.Size(439, 36);
+            this.labelAlquileres.TabIndex = 2;
+            this.labelAlquileres.Text = "Alquileres de: ";
+            this.labelAlquileres.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // VentanaInicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -276,10 +327,13 @@
             this.Controls.Add(this.desplegableBusqueda);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.desplegableGeneros);
+            this.Controls.Add(this.panelAlquileres);
             this.Name = "VentanaInicio";
             this.Text = "VentanaInicio";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panelInfoPeli.ResumeLayout(false);
+            this.panelAlquileres.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAlquileres)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -307,5 +361,9 @@
         private System.Windows.Forms.Button btnMostrarAlquileres;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox desplegableSociosVideoclub;
+        private System.Windows.Forms.Panel panelAlquileres;
+        private System.Windows.Forms.Button cerrarAlquileres;
+        private System.Windows.Forms.Label labelAlquileres;
+        private System.Windows.Forms.DataGridView dataGridViewAlquileres;
     }
 }

@@ -22,7 +22,14 @@ namespace videoclub
             panelInfoPeli.Visible = false;
             btnAlquilarPeli.Visible = false;
             btnMostrarAlquileres.Enabled = false;
-
+            //Oculto el panel de alquileres
+            panelAlquileres.Visible = false;
+            //Oculto el boton de cerrar alquileres
+            cerrarAlquileres.Visible = false;
+            //Oculto la etiqueta de alquileres
+            labelAlquileres.Visible = false;
+            //Oculto el DataGridView
+            dataGridViewAlquileres.Visible = false;
         }
         // Para que al cerrar este Form, se cierre la app completamente
         protected override void OnFormClosing(FormClosingEventArgs e)
@@ -82,8 +89,7 @@ namespace videoclub
             }
             conexion.Close();   // Para cerrar la conexión
         }
-
-
+        
         private void desplegableActores_SelectionChangeCommitted(object sender, EventArgs e)
         {       
             rellenaBusqueda();
@@ -117,6 +123,7 @@ namespace videoclub
             }
             conexion.Close();   // Para cerrar la conexión
         }
+
         private void usuarioEntrar_Click(object sender, EventArgs e)
         {
             // creamos una nueva ventana del tipo VentanaUsuario
@@ -296,6 +303,70 @@ namespace videoclub
                 }
             }
             conexion.Close();
+        }
+
+        private DataTable datos = new DataTable();
+
+        private void btnMostrarAlquileres_Click(object sender, EventArgs e)
+        {
+            //Muestro el panel de alquileres
+            panelAlquileres.Visible = true;
+            //Muestro el boton de cerrar alquileres
+            cerrarAlquileres.Visible = true;
+            //Muestro la etiqueta de alquileres
+            labelAlquileres.Visible = true;
+            //Muestro el DataGridView
+            dataGridViewAlquileres.Visible = true;
+            panelAlquileres.BringToFront();
+
+            labelAlquileres.Text = labelAlquileres.Text + desplegableBusqueda.SelectedItem.ToString();
+
+            //Obtengo el id de la pelicula
+            int idPeli = 0;
+
+            MySqlConnection conexion = new ConexionBBDD().conecta();
+            string sentencia_SQL = "SELECT id FROM movies WHERE name = '" + desplegableBusqueda.SelectedItem.ToString() + "';";
+            MySqlCommand comando = new MySqlCommand(sentencia_SQL, conexion);
+            MySqlDataReader resultado = comando.ExecuteReader();
+            if (resultado.Read())
+            {
+                idPeli = resultado.GetInt32("id");
+            }
+
+            conexion.Close();
+
+            //Relleno el DataGridView
+
+            //Tabla para el dataGridView
+            conexion.Open();
+            comando = new MySqlCommand("SELECT * FROM alquiler WHERE idPeli = " + idPeli, conexion);
+            resultado = comando.ExecuteReader();
+
+            //Magia from StackOverFlow
+            datos.Load(resultado);
+            dataGridViewAlquileres.DataSource = datos;
+            dataGridViewAlquileres.AutoResizeColumns();
+            int numFilas = datos.Rows.Count;
+            if(numFilas == 0)
+            {
+                MessageBox.Show("Esta pelicula no tiene alquileres. Consulte personalmente el almacen o reponga el stock", "Pelicula Sin Alquileres");
+            }
+            
+            conexion.Close();
+        }
+
+        private void cerrarAlquileres_Click(object sender, EventArgs e)
+        {
+            //Oculto el panel de alquileres
+            panelAlquileres.Visible = false;
+            //Oculto el boton de cerrar alquileres
+            cerrarAlquileres.Visible = false;
+            //Oculto la etiqueta de alquileres
+            labelAlquileres.Visible = false;
+            //Oculto el DataGridView
+            dataGridViewAlquileres.Visible = false;
+             
+            labelAlquileres.Text = "Alquileres de: ";
         }
     }
 }

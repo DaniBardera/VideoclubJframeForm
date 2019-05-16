@@ -13,6 +13,8 @@ namespace videoclub
 {
     public partial class Login : Form
     {
+        int numErrores = 0;
+
         public Login()
         {
             InitializeComponent();
@@ -22,44 +24,62 @@ namespace videoclub
 
         private void login()
         {
-            MySqlConnection conexion = new ConexionBBDD().conecta();
-
-            String texto1 = textBox1.Text;
-            String texto2 = textBox2.Text;
-
-            MySqlCommand comando = new MySqlCommand("" +
-                "SELECT * FROM usuarios WHERE" +
-                " usuario = '" + texto1 +
-                "' AND pass = '" + texto2 +
-                "' ", conexion);
-
-            if (texto1.Contains("'") || texto2.Contains("'"))
+            if (numErrores < 2)
             {
-                MessageBox.Show("Accceso Denegado", "USUARIO O CONTRASEÑA ERRONEOS");
+                MySqlConnection conexion = new ConexionBBDD().conecta();
+
+                String texto1 = textBox1.Text;
+                String texto2 = textBox2.Text;
+
+                MySqlCommand comando = new MySqlCommand("" +
+                    "SELECT * FROM usuarios WHERE" +
+                    " usuario = '" + texto1 +
+                    "' AND pass = '" + texto2 +
+                    "' ", conexion);
+
+                if (texto1.Contains("'") || texto2.Contains("'"))
+                {
+                    MessageBox.Show("Accceso Denegado", "USUARIO O CONTRASEÑA ERRONEOS");
+                    numErrores++;
+                }
+                else
+                {
+                    if (numErrores < 2)
+                    {
+                        MySqlDataReader resultado = comando.ExecuteReader();
+
+                        if (resultado.Read())
+                        {
+                            // ocultamos la ventana en la que estamos
+                            this.Visible = false;
+
+                            // creamos una nueva ventana del tipo VentanaPrincipal
+                            VentanaInicio ventana = new VentanaInicio();
+                            ventana.Visible = true;
+                            CenterToScreen();
+
+                            var mensajeBienvenida = MessageBox.Show("Acceso Correcto", "USUARIO OK");
+                            CenterToScreen();
+                        }
+
+                        else
+                        {
+                            MessageBox.Show("Accceso Denegado", "USUARIO O CONTRASEÑA ERRONEOS");
+                            CenterToScreen();
+                            numErrores++;
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Demasiados intentos acometidos. Cuenta bloqueada", "Bloqueado");
+                        System.Windows.Forms.Application.Exit();
+                    }
+                }
             }
             else
             {
-                MySqlDataReader resultado = comando.ExecuteReader();
-
-                if (resultado.Read())
-                {
-                    // ocultamos la ventana en la que estamos
-                    this.Visible = false;
-
-                    // creamos una nueva ventana del tipo VentanaPrincipal
-                    VentanaInicio ventana = new VentanaInicio();
-                    ventana.Visible = true;
-                    CenterToScreen();
-
-                    var mensajeBienvenida = MessageBox.Show("Acceso Correcto", "USUARIO OK");
-                    CenterToScreen();
-                }
-
-                else
-                {
-                    MessageBox.Show("Accceso Denegado", "USUARIO O CONTRASEÑA ERRONEOS");
-                    CenterToScreen();
-                }
+                MessageBox.Show("Demasiados intentos acometidos. Cuenta bloqueada", "Bloqueado");
+                System.Windows.Forms.Application.Exit();
             }
         }
 
