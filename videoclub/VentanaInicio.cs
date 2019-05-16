@@ -17,7 +17,8 @@ namespace videoclub
         public VentanaInicio()
         {
             InitializeComponent();
-            rellenaComboAutores();
+            rellenaComboGeneros();
+           
         }
         // Para que al cerrar este Form, se cierre la app completamente
         protected override void OnFormClosing(FormClosingEventArgs e)
@@ -26,33 +27,62 @@ namespace videoclub
             Application.Exit(); // Con este comando cerraremos la app
         }
 
-        private void rellenaComboAutores()
+        private void rellenaComboGeneros()
         {
             MySqlConnection conexion = new ConexionBBDD().conecta();
 
             // Le decimos en que punto tiene que buscar dentro de la BBDD
             MySqlCommand comando = new MySqlCommand
-                                    ("SELECT * FROM actors ORDER BY first_name", conexion);
+                                    ("SELECT distinct genre FROM movies_genres", conexion);
             // Con este comando mandamos ejecutar la consulta anterior
             MySqlDataReader resultado = comando.ExecuteReader();
 
             // Queremos que añada cada valor de la BBDD a nuestro comboBox
             while (resultado.Read())
             {
-                // Ejemplo buscando la columna por número
-                String id = resultado.GetString(0);
+                String genre = resultado.GetString("genre");
 
-                // Ejemplo buscando la columna por nombre
-                String first_name = resultado.GetString("first_name");
-                String last_name = resultado.GetString("last_name");
-                String gender = resultado.GetString("gender");
-
-                desplegableActores.Items.Add(id + first_name + " -- "
-                                            + last_name + " -- "
-                                            + gender + " -- ");
+                desplegableActores.Items.Add(genre);
             }
-
             conexion.Close();   // Para cerrar la conexión
+        }
+
+        private void desplegableActores_SelectionChangeCommitted(object sender, EventArgs e)
+        {       
+            rellenaBusqueda();
+        }
+        
+        public void rellenaBusqueda()
+        {
+            MySqlConnection conexion = new ConexionBBDD().conecta();
+
+            MySqlCommand comando = new MySqlCommand("" +
+                "SELECT name FROM movies, movies_genres WHERE"+
+                "movies_genres.genre = '" + desplegableActores + "'", conexion);
+
+            // Con este comando mandamos ejecutar la consulta anterior
+            MySqlDataReader resultado2 = comando.ExecuteReader();
+
+            while (resultado2.Read())
+            {
+                String name = resultado2.GetString("name");
+
+                desplegableBusqueda.Items.Add(name);
+            }
+            conexion.Close();   // Para cerrar la conexión
+        }
+        private void usuarioEntrar_Click(object sender, EventArgs e)
+        {
+            // creamos una nueva ventana del tipo VentanaUsuario
+            VentanaUsuario ventana = new VentanaUsuario();
+            ventana.Visible = true;
+        }
+
+        private void nuevoUsuarioEntrar_Click(object sender, EventArgs e)
+        {
+            // creamos una nueva ventana del tipo VentanaNuevoUsuario
+            VentanaNuevoUsuario ventana = new VentanaNuevoUsuario();
+            ventana.Visible = true;
         }
     }
 }

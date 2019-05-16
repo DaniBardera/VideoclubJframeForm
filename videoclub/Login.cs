@@ -24,13 +24,11 @@ namespace videoclub
             String texto1 = textBox1.Text;
             String texto2 = textBox2.Text;
 
-         
-
             MySqlCommand comando = new MySqlCommand("" +
                 "SELECT * FROM usuarios WHERE" +
                 " usuario = '" + texto1 +
                 "' AND pass = '" + texto2 +
-                "' ;", conexion);
+                "' ", conexion);
 
             if (texto1.Contains("'") || texto2.Contains("'"))
             {

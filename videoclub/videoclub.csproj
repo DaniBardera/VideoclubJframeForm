@@ -83,6 +83,18 @@
     <Compile Include="VentanaInicio.Designer.cs">
       <DependentUpon>VentanaInicio.cs</DependentUpon>
     </Compile>
+    <Compile Include="VentanaNuevoUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VentanaNuevoUsuario.Designer.cs">
+      <DependentUpon>VentanaNuevoUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VentanaUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VentanaUsuario.Designer.cs">
+      <DependentUpon>VentanaUsuario.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -100,6 +112,12 @@
     </Compile>
     <EmbeddedResource Include="VentanaInicio.resx">
       <DependentUpon>VentanaInicio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VentanaNuevoUsuario.resx">
+      <DependentUpon>VentanaNuevoUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VentanaUsuario.resx">
+      <DependentUpon>VentanaUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

@@ -22,7 +22,7 @@ namespace videoclub
             MySqlConnection conexion = new MySqlConnection(
                 "Server=127.0.0.1; " +
                 "Database=videoclub;" +
-                "Uid=root1234;" +
+                "Uid=root;" +
                 "Pwd=;" +
                 "Port=3306;"
                 );
