@@ -38,22 +38,22 @@
             this.nuevoUsuarioEntrar = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelInfoPeli = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.stockPeli = new System.Windows.Forms.Label();
             this.rankingPeli = new System.Windows.Forms.Label();
             this.yearPeli = new System.Windows.Forms.Label();
             this.nombrePeli = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.btnAlquilarPeli = new System.Windows.Forms.Button();
             this.btnMostrarAlquileres = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.desplegableSociosVideoclub = new System.Windows.Forms.ComboBox();
             this.panelAlquileres = new System.Windows.Forms.Panel();
-            this.cerrarAlquileres = new System.Windows.Forms.Button();
-            this.dataGridViewAlquileres = new System.Windows.Forms.DataGridView();
             this.labelAlquileres = new System.Windows.Forms.Label();
+            this.dataGridViewAlquileres = new System.Windows.Forms.DataGridView();
+            this.cerrarAlquileres = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panelInfoPeli.SuspendLayout();
             this.panelAlquileres.SuspendLayout();
@@ -151,46 +151,6 @@
             this.panelInfoPeli.Size = new System.Drawing.Size(439, 213);
             this.panelInfoPeli.TabIndex = 8;
             // 
-            // label4
-            // 
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(11, 43);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(151, 23);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "Nombre:";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label3
-            // 
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(11, 77);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(150, 23);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "Año Emisión:";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label5
-            // 
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(11, 145);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(150, 23);
-            this.label5.TabIndex = 3;
-            this.label5.Text = "Stock:";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label6
-            // 
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(11, 111);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(150, 23);
-            this.label6.TabIndex = 2;
-            this.label6.Text = "Ranking IMDB:";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // stockPeli
             // 
             this.stockPeli.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -226,6 +186,46 @@
             this.nombrePeli.Size = new System.Drawing.Size(268, 23);
             this.nombrePeli.TabIndex = 4;
             this.nombrePeli.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label5
+            // 
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(11, 145);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(150, 23);
+            this.label5.TabIndex = 3;
+            this.label5.Text = "Stock:";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label6
+            // 
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(11, 111);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(150, 23);
+            this.label6.TabIndex = 2;
+            this.label6.Text = "Ranking IMDB:";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label3
+            // 
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(11, 77);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(150, 23);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "Año Emisión:";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label4
+            // 
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(11, 43);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(151, 23);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Nombre:";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnAlquilarPeli
             // 
@@ -276,15 +276,15 @@
             this.panelAlquileres.Size = new System.Drawing.Size(592, 328);
             this.panelAlquileres.TabIndex = 12;
             // 
-            // cerrarAlquileres
+            // labelAlquileres
             // 
-            this.cerrarAlquileres.Location = new System.Drawing.Point(450, 3);
-            this.cerrarAlquileres.Name = "cerrarAlquileres";
-            this.cerrarAlquileres.Size = new System.Drawing.Size(139, 36);
-            this.cerrarAlquileres.TabIndex = 0;
-            this.cerrarAlquileres.Text = "Cerrar";
-            this.cerrarAlquileres.UseVisualStyleBackColor = true;
-            this.cerrarAlquileres.Click += new System.EventHandler(this.cerrarAlquileres_Click);
+            this.labelAlquileres.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelAlquileres.Location = new System.Drawing.Point(5, 3);
+            this.labelAlquileres.Name = "labelAlquileres";
+            this.labelAlquileres.Size = new System.Drawing.Size(439, 36);
+            this.labelAlquileres.TabIndex = 2;
+            this.labelAlquileres.Text = "Alquileres de: ";
+            this.labelAlquileres.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // dataGridViewAlquileres
             // 
@@ -299,15 +299,15 @@
             this.dataGridViewAlquileres.Size = new System.Drawing.Size(584, 283);
             this.dataGridViewAlquileres.TabIndex = 1;
             // 
-            // labelAlquileres
+            // cerrarAlquileres
             // 
-            this.labelAlquileres.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelAlquileres.Location = new System.Drawing.Point(5, 3);
-            this.labelAlquileres.Name = "labelAlquileres";
-            this.labelAlquileres.Size = new System.Drawing.Size(439, 36);
-            this.labelAlquileres.TabIndex = 2;
-            this.labelAlquileres.Text = "Alquileres de: ";
-            this.labelAlquileres.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.cerrarAlquileres.Location = new System.Drawing.Point(450, 3);
+            this.cerrarAlquileres.Name = "cerrarAlquileres";
+            this.cerrarAlquileres.Size = new System.Drawing.Size(139, 36);
+            this.cerrarAlquileres.TabIndex = 0;
+            this.cerrarAlquileres.Text = "Cerrar";
+            this.cerrarAlquileres.UseVisualStyleBackColor = true;
+            this.cerrarAlquileres.Click += new System.EventHandler(this.cerrarAlquileres_Click);
             // 
             // VentanaInicio
             // 
