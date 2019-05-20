@@ -29,55 +29,29 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VentanaUsuario));
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
             this.foto = new System.Windows.Forms.PictureBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.tb_nombre = new System.Windows.Forms.Label();
-            this.tb_apellido = new System.Windows.Forms.Label();
-            this.tb_email = new System.Windows.Forms.Label();
-            this.tb_telefono = new System.Windows.Forms.Label();
-            this.tb_direccion = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.tb_fech_nac = new System.Windows.Forms.Label();
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.tb_dni = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.nickName = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.datosUsuario = new System.Windows.Forms.Panel();
+            this.l_nombre = new System.Windows.Forms.Label();
+            this.l_apellido = new System.Windows.Forms.Label();
+            this.l_direccion = new System.Windows.Forms.Label();
+            this.l_email = new System.Windows.Forms.Label();
+            this.l_sexo = new System.Windows.Forms.Label();
+            this.l_telefono = new System.Windows.Forms.Label();
+            this.direccion_usu = new System.Windows.Forms.Label();
+            this.apellido_usu = new System.Windows.Forms.Label();
+            this.nombre_usu = new System.Windows.Forms.Label();
+            this.email_usu = new System.Windows.Forms.Label();
+            this.sexo_usu = new System.Windows.Forms.Label();
+            this.telefono_usu = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.foto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.datosUsuario.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(140, 185);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(118, 20);
-            this.textBox1.TabIndex = 0;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(140, 223);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(192, 20);
-            this.textBox2.TabIndex = 1;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(140, 311);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(118, 20);
-            this.textBox3.TabIndex = 2;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(140, 392);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(196, 20);
-            this.textBox4.TabIndex = 3;
             // 
             // foto
             // 
@@ -87,83 +61,9 @@
             this.foto.TabIndex = 4;
             this.foto.TabStop = false;
             // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(140, 266);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(192, 20);
-            this.textBox5.TabIndex = 5;
-            // 
-            // tb_nombre
-            // 
-            this.tb_nombre.AutoSize = true;
-            this.tb_nombre.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_nombre.Location = new System.Drawing.Point(63, 185);
-            this.tb_nombre.Name = "tb_nombre";
-            this.tb_nombre.Size = new System.Drawing.Size(57, 20);
-            this.tb_nombre.TabIndex = 6;
-            this.tb_nombre.Text = "Nombre";
-            // 
-            // tb_apellido
-            // 
-            this.tb_apellido.AutoSize = true;
-            this.tb_apellido.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_apellido.Location = new System.Drawing.Point(54, 223);
-            this.tb_apellido.Name = "tb_apellido";
-            this.tb_apellido.Size = new System.Drawing.Size(66, 20);
-            this.tb_apellido.TabIndex = 7;
-            this.tb_apellido.Text = "Apellidos";
-            // 
-            // tb_email
-            // 
-            this.tb_email.AutoSize = true;
-            this.tb_email.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_email.Location = new System.Drawing.Point(78, 266);
-            this.tb_email.Name = "tb_email";
-            this.tb_email.Size = new System.Drawing.Size(42, 20);
-            this.tb_email.TabIndex = 8;
-            this.tb_email.Text = "Email";
-            // 
-            // tb_telefono
-            // 
-            this.tb_telefono.AutoSize = true;
-            this.tb_telefono.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_telefono.Location = new System.Drawing.Point(59, 311);
-            this.tb_telefono.Name = "tb_telefono";
-            this.tb_telefono.Size = new System.Drawing.Size(61, 20);
-            this.tb_telefono.TabIndex = 9;
-            this.tb_telefono.Text = "Telefono";
-            // 
-            // tb_direccion
-            // 
-            this.tb_direccion.AutoSize = true;
-            this.tb_direccion.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_direccion.Location = new System.Drawing.Point(58, 392);
-            this.tb_direccion.Name = "tb_direccion";
-            this.tb_direccion.Size = new System.Drawing.Size(65, 20);
-            this.tb_direccion.TabIndex = 10;
-            this.tb_direccion.Text = "Direccion";
-            // 
-            // textBox6
-            // 
-            this.textBox6.Location = new System.Drawing.Point(140, 351);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(147, 20);
-            this.textBox6.TabIndex = 11;
-            // 
-            // tb_fech_nac
-            // 
-            this.tb_fech_nac.AutoSize = true;
-            this.tb_fech_nac.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_fech_nac.Location = new System.Drawing.Point(4, 351);
-            this.tb_fech_nac.Name = "tb_fech_nac";
-            this.tb_fech_nac.Size = new System.Drawing.Size(116, 20);
-            this.tb_fech_nac.TabIndex = 12;
-            this.tb_fech_nac.Text = "Fecha Nacimiento";
-            // 
             // textBox7
             // 
-            this.textBox7.Location = new System.Drawing.Point(140, 145);
+            this.textBox7.Location = new System.Drawing.Point(48, 147);
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(100, 20);
             this.textBox7.TabIndex = 13;
@@ -172,7 +72,7 @@
             // 
             this.tb_dni.AutoSize = true;
             this.tb_dni.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_dni.Location = new System.Drawing.Point(89, 145);
+            this.tb_dni.Location = new System.Drawing.Point(12, 145);
             this.tb_dni.Name = "tb_dni";
             this.tb_dni.Size = new System.Drawing.Size(30, 20);
             this.tb_dni.TabIndex = 14;
@@ -197,64 +97,177 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(261, 145);
+            this.button1.Location = new System.Drawing.Point(182, 147);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(50, 20);
             this.button1.TabIndex = 17;
             this.button1.Text = "Buscar";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // datosUsuario
+            // 
+            this.datosUsuario.Controls.Add(this.email_usu);
+            this.datosUsuario.Controls.Add(this.sexo_usu);
+            this.datosUsuario.Controls.Add(this.telefono_usu);
+            this.datosUsuario.Controls.Add(this.direccion_usu);
+            this.datosUsuario.Controls.Add(this.apellido_usu);
+            this.datosUsuario.Controls.Add(this.nombre_usu);
+            this.datosUsuario.Controls.Add(this.l_email);
+            this.datosUsuario.Controls.Add(this.l_sexo);
+            this.datosUsuario.Controls.Add(this.l_telefono);
+            this.datosUsuario.Controls.Add(this.l_direccion);
+            this.datosUsuario.Controls.Add(this.l_apellido);
+            this.datosUsuario.Controls.Add(this.l_nombre);
+            this.datosUsuario.Location = new System.Drawing.Point(12, 184);
+            this.datosUsuario.Name = "datosUsuario";
+            this.datosUsuario.Size = new System.Drawing.Size(354, 257);
+            this.datosUsuario.TabIndex = 18;
+            // 
+            // l_nombre
+            // 
+            this.l_nombre.AutoSize = true;
+            this.l_nombre.Location = new System.Drawing.Point(16, 31);
+            this.l_nombre.Name = "l_nombre";
+            this.l_nombre.Size = new System.Drawing.Size(47, 13);
+            this.l_nombre.TabIndex = 0;
+            this.l_nombre.Text = "Nombre:";
+            // 
+            // l_apellido
+            // 
+            this.l_apellido.AutoSize = true;
+            this.l_apellido.Location = new System.Drawing.Point(16, 74);
+            this.l_apellido.Name = "l_apellido";
+            this.l_apellido.Size = new System.Drawing.Size(47, 13);
+            this.l_apellido.TabIndex = 1;
+            this.l_apellido.Text = "Apellido:";
+            // 
+            // l_direccion
+            // 
+            this.l_direccion.AutoSize = true;
+            this.l_direccion.Location = new System.Drawing.Point(16, 111);
+            this.l_direccion.Name = "l_direccion";
+            this.l_direccion.Size = new System.Drawing.Size(52, 13);
+            this.l_direccion.TabIndex = 2;
+            this.l_direccion.Text = "Dirección";
+            // 
+            // l_email
+            // 
+            this.l_email.AutoSize = true;
+            this.l_email.Location = new System.Drawing.Point(16, 229);
+            this.l_email.Name = "l_email";
+            this.l_email.Size = new System.Drawing.Size(35, 13);
+            this.l_email.TabIndex = 5;
+            this.l_email.Text = "Email:";
+            // 
+            // l_sexo
+            // 
+            this.l_sexo.AutoSize = true;
+            this.l_sexo.Location = new System.Drawing.Point(16, 192);
+            this.l_sexo.Name = "l_sexo";
+            this.l_sexo.Size = new System.Drawing.Size(34, 13);
+            this.l_sexo.TabIndex = 4;
+            this.l_sexo.Text = "Sexo:";
+            // 
+            // l_telefono
+            // 
+            this.l_telefono.AutoSize = true;
+            this.l_telefono.Location = new System.Drawing.Point(16, 149);
+            this.l_telefono.Name = "l_telefono";
+            this.l_telefono.Size = new System.Drawing.Size(49, 13);
+            this.l_telefono.TabIndex = 3;
+            this.l_telefono.Text = "Teléfono";
+            // 
+            // direccion_usu
+            // 
+            this.direccion_usu.AutoSize = true;
+            this.direccion_usu.Location = new System.Drawing.Point(167, 111);
+            this.direccion_usu.Name = "direccion_usu";
+            this.direccion_usu.Size = new System.Drawing.Size(0, 13);
+            this.direccion_usu.TabIndex = 8;
+            // 
+            // apellido_usu
+            // 
+            this.apellido_usu.AutoSize = true;
+            this.apellido_usu.Location = new System.Drawing.Point(167, 74);
+            this.apellido_usu.Name = "apellido_usu";
+            this.apellido_usu.Size = new System.Drawing.Size(0, 13);
+            this.apellido_usu.TabIndex = 7;
+            // 
+            // nombre_usu
+            // 
+            this.nombre_usu.AutoSize = true;
+            this.nombre_usu.Location = new System.Drawing.Point(167, 31);
+            this.nombre_usu.Name = "nombre_usu";
+            this.nombre_usu.Size = new System.Drawing.Size(0, 13);
+            this.nombre_usu.TabIndex = 6;
+            // 
+            // email_usu
+            // 
+            this.email_usu.AutoSize = true;
+            this.email_usu.Location = new System.Drawing.Point(161, 229);
+            this.email_usu.Name = "email_usu";
+            this.email_usu.Size = new System.Drawing.Size(0, 13);
+            this.email_usu.TabIndex = 11;
+            // 
+            // sexo_usu
+            // 
+            this.sexo_usu.AutoSize = true;
+            this.sexo_usu.Location = new System.Drawing.Point(161, 192);
+            this.sexo_usu.Name = "sexo_usu";
+            this.sexo_usu.Size = new System.Drawing.Size(0, 13);
+            this.sexo_usu.TabIndex = 10;
+            // 
+            // telefono_usu
+            // 
+            this.telefono_usu.AutoSize = true;
+            this.telefono_usu.Location = new System.Drawing.Point(161, 149);
+            this.telefono_usu.Name = "telefono_usu";
+            this.telefono_usu.Size = new System.Drawing.Size(0, 13);
+            this.telefono_usu.TabIndex = 9;
             // 
             // VentanaUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(679, 453);
+            this.Controls.Add(this.datosUsuario);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.nickName);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.tb_dni);
             this.Controls.Add(this.textBox7);
-            this.Controls.Add(this.tb_fech_nac);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.tb_direccion);
-            this.Controls.Add(this.tb_telefono);
-            this.Controls.Add(this.tb_email);
-            this.Controls.Add(this.tb_apellido);
-            this.Controls.Add(this.tb_nombre);
-            this.Controls.Add(this.textBox5);
             this.Controls.Add(this.foto);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
             this.Name = "VentanaUsuario";
             this.Text = "VentanaUsuario";
             ((System.ComponentModel.ISupportInitialize)(this.foto)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.datosUsuario.ResumeLayout(false);
+            this.datosUsuario.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.PictureBox foto;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.Label tb_nombre;
-        private System.Windows.Forms.Label tb_apellido;
-        private System.Windows.Forms.Label tb_email;
-        private System.Windows.Forms.Label tb_telefono;
-        private System.Windows.Forms.Label tb_direccion;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.Label tb_fech_nac;
         private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.Label tb_dni;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label nickName;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Panel datosUsuario;
+        private System.Windows.Forms.Label email_usu;
+        private System.Windows.Forms.Label sexo_usu;
+        private System.Windows.Forms.Label telefono_usu;
+        private System.Windows.Forms.Label direccion_usu;
+        private System.Windows.Forms.Label apellido_usu;
+        private System.Windows.Forms.Label nombre_usu;
+        private System.Windows.Forms.Label l_email;
+        private System.Windows.Forms.Label l_sexo;
+        private System.Windows.Forms.Label l_telefono;
+        private System.Windows.Forms.Label l_direccion;
+        private System.Windows.Forms.Label l_apellido;
+        private System.Windows.Forms.Label l_nombre;
     }
 }

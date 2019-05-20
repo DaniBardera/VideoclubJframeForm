@@ -81,7 +81,7 @@ namespace videoclub
 
                 desplegableSociosVideoclub.Items.Add(socio);
 
-                if(!usuarioElegido)
+                if (!usuarioElegido)
                 {
                     desplegableSociosVideoclub.SelectedItem = socio;
                     usuarioElegido = true;
@@ -89,12 +89,12 @@ namespace videoclub
             }
             conexion.Close();   // Para cerrar la conexión
         }
-        
+
         private void desplegableActores_SelectionChangeCommitted(object sender, EventArgs e)
-        {       
+        {
             rellenaBusqueda();
         }
-        
+
         public void rellenaBusqueda()
         {
             //Limpiamos el desplegable de las peliculas
@@ -115,7 +115,7 @@ namespace videoclub
             {
                 String name = resultado2.GetString("name");
                 desplegableBusqueda.Items.Add(name);
-                if(!peliElegida)
+                if (!peliElegida)
                 {
                     desplegableBusqueda.SelectedItem = name;
                     peliElegida = true;
@@ -143,7 +143,7 @@ namespace videoclub
             //Mostramos panel
             panelInfoPeli.Visible = true;
             btnAlquilarPeli.Visible = true;
-            
+
             //Actualizamos datos de la peli
             string peli = desplegableBusqueda.SelectedItem.ToString();
 
@@ -155,11 +155,11 @@ namespace videoclub
             // Con este comando mandamos ejecutar la consulta anterior
             MySqlDataReader resultado = comando.ExecuteReader();
 
-            if(resultado.Read())
+            if (resultado.Read())
             {
                 //Comprobamos los datos y si los tenemos los introducimos en sus lugares
                 //Si no hay nulos en la 1ª columna, saco el nombre
-                if(!resultado.IsDBNull(1))
+                if (!resultado.IsDBNull(1))
                 {
                     nombrePeli.Text = resultado.GetString("name");
                 }
@@ -206,10 +206,14 @@ namespace videoclub
             conexion.Close();
 
             //Comprobamos si esta pelicula ha tenido alquileres
-            if(muestraAlquileres(peli))
+            if (muestraAlquileres(peli))
             {
                 //Mostramos el boton de mostrar alquileres
                 btnMostrarAlquileres.Enabled = true;
+            }
+            else
+            {
+                btnMostrarAlquileres.Enabled = false;
             }
 
         }
@@ -218,12 +222,30 @@ namespace videoclub
         {
             bool tieneAlquileres = false;
 
+            //Consulta a BBDD de Alquiler, si el ID de la peli figura en la tabla, tieneAlquileres
+            MySqlConnection conexion = new ConexionBBDD().conecta();
+
+            MySqlCommand comando = new MySqlCommand("SELECT * FROM alquiler WHERE idPeli = (SELECT id FROM movies WHERE name = '" + pelicula + "');", conexion);
+
+            // Con este comando mandamos ejecutar la consulta anterior
+            MySqlDataReader resultado = comando.ExecuteReader();
+
+            if (resultado.Read())
+            {
+                if (!resultado.IsDBNull(1))
+                {
+                    tieneAlquileres = true;
+                }
+            }
+
             return tieneAlquileres;
         }
 
         private void btnAlquilarPeli_Click(object sender, EventArgs e)
         {
             //Alquilamos la peli
+            bool puedeAlquilar = true;
+
             //Que necesito para alquilar la pelicula? idPeli, idUsuario, fechaActual
             string usuarioElegido = desplegableSociosVideoclub.SelectedItem.ToString();
             string[] usuario = usuarioElegido.Split(',');
@@ -246,7 +268,7 @@ namespace videoclub
             int stock = 0;
 
             //Cojo el ID de la pelicula y su stock original
-            if(resultado.Read())
+            if (resultado.Read())
             {
                 idPeli = resultado.GetInt32("id");
                 stock = resultado.GetInt32("stock");
@@ -254,55 +276,80 @@ namespace videoclub
 
             conexion.Close();
 
-            //Cojo la fecha de hoy
-            DateTime hoy = DateTime.Now;
-
-            //Establezco un periodo de alquiler de 10 dias
-            DateTime fechaDevol = hoy.AddDays(10);
-
-            string valores = idPeli + ", '" + DNI + "' ," + "'" + hoy.ToString("yyyy-MM-dd H:mm:ss") + "'" + "," + "'" + fechaDevol.ToString("yyyy-MM-dd H:mm:ss") + "'";
-
-            //Stock previo de la pelicula antes de alquilarla
+            //Compruebo si el usuario tiene alquileres ya de esa pelicula
             conexion.Open();
 
-            comando = new MySqlCommand("INSERT INTO alquiler (idPeli, idUsuario, fechaInicio, fechaFin) " +
-                "VALUES (" + valores + ");", conexion);
+            comando = new MySqlCommand("SELECT * FROM alquiler WHERE idPeli = " + idPeli + " AND idUsuario = '" + DNI + "' AND fechaDevolucion IS NULL;", conexion);
 
             resultado = comando.ExecuteReader();
-            //Si el comando altera una fila, se que se habrá añadido correctamente el alquiler
-            if (resultado.RecordsAffected == 1)
+
+            if(resultado.Read())
             {
-                MessageBox.Show("Pelicula alquilada correctamente", "Pelicula Alquilada");
-                CenterToParent();
+                if(resultado.HasRows)
+                {
+                    puedeAlquilar = false;
+                }
             }
 
             conexion.Close();
 
-            //Resto 1 al stock de la peli -- UPDATE
-            int nuevoStock = stock-1;
-
-            conexion.Open();
-            comando = new MySqlCommand("UPDATE movies SET stock = " + nuevoStock + " WHERE id = " + idPeli + ";",conexion);
-            resultado = comando.ExecuteReader();
-            //Si el comando altera una fila cambiamos el valor de los items disponibles
-            if (resultado.RecordsAffected == 1)
+            if (puedeAlquilar)
             {
-                //Si no hay nulos en la 4ª columna, saco el stock de la peli
-                if (nuevoStock > 0)
+                //Cojo la fecha de hoy
+                DateTime hoy = DateTime.Now;
+
+                //Establezco un periodo de alquiler de 10 dias
+                DateTime fechaDevol = hoy.AddDays(10);
+
+                string valores = idPeli + ", '" + DNI + "' ," + "'" + hoy.ToString("yyyy-MM-dd H:mm:ss") + "'" + "," + "'" + fechaDevol.ToString("yyyy-MM-dd H:mm:ss") + "'";
+
+                //Stock previo de la pelicula antes de alquilarla
+                conexion.Open();
+
+                comando = new MySqlCommand("INSERT INTO alquiler (idPeli, idUsuario, fechaInicio, fechaFin) " +
+                    "VALUES (" + valores + ");", conexion);
+
+                resultado = comando.ExecuteReader();
+                //Si el comando altera una fila, se que se habrá añadido correctamente el alquiler
+                if (resultado.RecordsAffected == 1)
                 {
-                    stockPeli.Text = nuevoStock.ToString();
-                    //Habilito el boton de alquilar
-                    btnAlquilarPeli.Enabled = true;
+                    MessageBox.Show("Pelicula alquilada correctamente", "Pelicula Alquilada");
+                    CenterToParent();
                 }
-                else
+
+                conexion.Close();
+
+                //Resto 1 al stock de la peli -- UPDATE
+                int nuevoStock = stock - 1;
+
+                conexion.Open();
+                comando = new MySqlCommand("UPDATE movies SET stock = " + nuevoStock + " WHERE id = " + idPeli + ";", conexion);
+                resultado = comando.ExecuteReader();
+                //Si el comando altera una fila cambiamos el valor de los items disponibles
+                if (resultado.RecordsAffected == 1)
                 {
-                    stockPeli.Text = "No queda stock";
-                    //Deshabilito el boton de alquilar la peli
-                    btnAlquilarPeli.Enabled = false;
-                    btnMostrarAlquileres.Enabled = true;
+                    //Si no hay nulos en la 4ª columna, saco el stock de la peli
+                    if (nuevoStock > 0)
+                    {
+                        stockPeli.Text = nuevoStock.ToString();
+                        //Habilito el boton de alquilar
+                        btnAlquilarPeli.Enabled = true;
+                        btnMostrarAlquileres.Enabled = true;
+                    }
+                    else
+                    {
+                        stockPeli.Text = "No queda stock";
+                        //Deshabilito el boton de alquilar la peli
+                        btnAlquilarPeli.Enabled = false;
+                        btnMostrarAlquileres.Enabled = true;
+                    }
                 }
+                conexion.Close();
             }
-            conexion.Close();
+            else
+            {
+                MessageBox.Show("El cliente ya tiene alquilada la pelicula. Debe devolverla antes", "Pelicula Ya Alquilada");
+            }
         }
 
         private DataTable datos = new DataTable();
@@ -338,20 +385,25 @@ namespace videoclub
             //Relleno el DataGridView
 
             //Tabla para el dataGridView
-            conexion.Open();
-            comando = new MySqlCommand("SELECT * FROM alquiler WHERE idPeli = " + idPeli, conexion);
-            resultado = comando.ExecuteReader();
+            muestraDatosPeliculas(idPeli);
+        }
+
+        private void muestraDatosPeliculas(int idPeli)
+        {
+            MySqlConnection conexion = new ConexionBBDD().conecta();
+            MySqlCommand comando = new MySqlCommand("SELECT * FROM alquiler WHERE idPeli = " + idPeli, conexion);
+            MySqlDataReader resultado = comando.ExecuteReader();
 
             //Magia from StackOverFlow
             datos.Load(resultado);
             dataGridViewAlquileres.DataSource = datos;
             dataGridViewAlquileres.AutoResizeColumns();
             int numFilas = datos.Rows.Count;
-            if(numFilas == 0)
+            if (numFilas == 0)
             {
                 MessageBox.Show("Esta pelicula no tiene alquileres. Consulte personalmente el almacen o reponga el stock", "Pelicula Sin Alquileres");
             }
-            
+
             conexion.Close();
         }
 
@@ -365,8 +417,108 @@ namespace videoclub
             labelAlquileres.Visible = false;
             //Oculto el DataGridView
             dataGridViewAlquileres.Visible = false;
-             
+
             labelAlquileres.Text = "Alquileres de: ";
+        }
+
+        private void dataGridViewAlquileres_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //Si hemos pinchado en algun dato
+            if (e.RowIndex >= 0)
+            {
+                //Cogemos la fila
+                DataGridViewRow fila = this.dataGridViewAlquileres.CurrentRow;
+
+                //Cogemos los datos del cliente
+
+                //ID Pelicula
+                string idPeli = fila.Cells[0].Value.ToString();
+                //DNI
+                string dniCliente = fila.Cells[1].Value.ToString();
+                //DNI
+                string fechaInicio = fila.Cells[2].Value.ToString();
+                //DNI
+                string fechaFin = fila.Cells[3].Value.ToString();
+                //DNI
+                string fechaDevol = fila.Cells[4].Value.ToString();
+
+                datosClienteAlquiler.Text = dniCliente + " - " + idPeli;
+                fechaMaximaDevolucion.Text = fechaFin;
+
+                //Si no tiene fecha de devolucion la fila, podremos devolver la pelicula, si tiene fecha de devolucion no la devolvemos
+                if(String.IsNullOrEmpty(fechaDevol) || String.IsNullOrWhiteSpace(fechaDevol))
+                {
+                    btnDevolverPelicula.Enabled = true;
+                }
+                else
+                {
+                    btnDevolverPelicula.Enabled = false;
+                }
+            }
+        }
+
+        private void btnDevolverPelicula_Click(object sender, EventArgs e)
+        {
+            //Cogemos los datos del cliente y pelicula
+            string clienteYPeli = datosClienteAlquiler.Text;
+
+            string[] datos = clienteYPeli.Split('-');
+
+            string dni = datos[0].Trim();
+            string peli = datos[1].Trim();
+
+            int idPeli = Int32.Parse(peli);
+
+            //Cojo la fecha actual
+            DateTime ahora = DateTime.Now;
+
+            //Hago un update de alquiler y actualizo el stock
+            MySqlConnection conexion = new ConexionBBDD().conecta();
+
+            //Cojo el stock actual de la peli
+            MySqlCommand comando = new MySqlCommand("SELECT stock FROM movies WHERE id = " + idPeli + ";", conexion);
+
+            MySqlDataReader resultado = comando.ExecuteReader();
+
+            int nuevoStock = 0;
+
+            if (resultado.Read())
+            {
+                int stock = resultado.GetInt32("stock");
+
+                nuevoStock = stock + 1;
+            }
+
+            conexion.Close();
+
+            conexion.Open();
+
+            comando = new MySqlCommand("UPDATE alquiler SET fechaDevolucion = '" + ahora.ToString("yyyy-MM-dd H:mm:ss") + "' WHERE idPeli = " + idPeli + " AND idUsuario = '" + dni + "';", conexion);
+
+            // Con este comando mandamos ejecutar la consulta anterior
+            resultado = comando.ExecuteReader();
+
+            //Si el comando altera una fila cambiamos el valor de los items disponibles
+            if (resultado.RecordsAffected >= 1)
+            {
+
+                conexion.Close();
+
+                conexion.Open();
+
+                comando = new MySqlCommand("UPDATE movies SET stock = " + nuevoStock + " WHERE id = " + idPeli + ";", conexion);
+
+                resultado = comando.ExecuteReader();
+
+                if (resultado.RecordsAffected >= 1)
+                {
+                    MessageBox.Show("Pelicula devuelta correctamente", "Devolucion Completada");
+                    conexion.Close();
+                    muestraDatosPeliculas(idPeli);
+                    btnDevolverPelicula.Enabled = false;
+                    stockPeli.Text = nuevoStock.ToString();
+                }
+            }
         }
     }
 }

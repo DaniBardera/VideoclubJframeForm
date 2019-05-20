@@ -54,6 +54,11 @@
             this.labelAlquileres = new System.Windows.Forms.Label();
             this.dataGridViewAlquileres = new System.Windows.Forms.DataGridView();
             this.cerrarAlquileres = new System.Windows.Forms.Button();
+            this.datosClienteAlquiler = new System.Windows.Forms.TextBox();
+            this.fechaMaximaDevolucion = new System.Windows.Forms.TextBox();
+            this.btnDevolverPelicula = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panelInfoPeli.SuspendLayout();
             this.panelAlquileres.SuspendLayout();
@@ -268,6 +273,11 @@
             // panelAlquileres
             // 
             this.panelAlquileres.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.panelAlquileres.Controls.Add(this.label9);
+            this.panelAlquileres.Controls.Add(this.label8);
+            this.panelAlquileres.Controls.Add(this.btnDevolverPelicula);
+            this.panelAlquileres.Controls.Add(this.fechaMaximaDevolucion);
+            this.panelAlquileres.Controls.Add(this.datosClienteAlquiler);
             this.panelAlquileres.Controls.Add(this.labelAlquileres);
             this.panelAlquileres.Controls.Add(this.dataGridViewAlquileres);
             this.panelAlquileres.Controls.Add(this.cerrarAlquileres);
@@ -296,8 +306,9 @@
             this.dataGridViewAlquileres.Location = new System.Drawing.Point(5, 42);
             this.dataGridViewAlquileres.Name = "dataGridViewAlquileres";
             this.dataGridViewAlquileres.ReadOnly = true;
-            this.dataGridViewAlquileres.Size = new System.Drawing.Size(584, 283);
+            this.dataGridViewAlquileres.Size = new System.Drawing.Size(584, 213);
             this.dataGridViewAlquileres.TabIndex = 1;
+            this.dataGridViewAlquileres.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewAlquileres_CellClick);
             // 
             // cerrarAlquileres
             // 
@@ -308,6 +319,55 @@
             this.cerrarAlquileres.Text = "Cerrar";
             this.cerrarAlquileres.UseVisualStyleBackColor = true;
             this.cerrarAlquileres.Click += new System.EventHandler(this.cerrarAlquileres_Click);
+            // 
+            // datosClienteAlquiler
+            // 
+            this.datosClienteAlquiler.Enabled = false;
+            this.datosClienteAlquiler.Location = new System.Drawing.Point(6, 297);
+            this.datosClienteAlquiler.Name = "datosClienteAlquiler";
+            this.datosClienteAlquiler.Size = new System.Drawing.Size(210, 20);
+            this.datosClienteAlquiler.TabIndex = 3;
+            this.datosClienteAlquiler.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // fechaMaximaDevolucion
+            // 
+            this.fechaMaximaDevolucion.Enabled = false;
+            this.fechaMaximaDevolucion.Location = new System.Drawing.Point(239, 297);
+            this.fechaMaximaDevolucion.Name = "fechaMaximaDevolucion";
+            this.fechaMaximaDevolucion.Size = new System.Drawing.Size(210, 20);
+            this.fechaMaximaDevolucion.TabIndex = 4;
+            this.fechaMaximaDevolucion.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // btnDevolverPelicula
+            // 
+            this.btnDevolverPelicula.Enabled = false;
+            this.btnDevolverPelicula.Location = new System.Drawing.Point(474, 269);
+            this.btnDevolverPelicula.Name = "btnDevolverPelicula";
+            this.btnDevolverPelicula.Size = new System.Drawing.Size(115, 47);
+            this.btnDevolverPelicula.TabIndex = 7;
+            this.btnDevolverPelicula.Text = "Devolver Pelicula";
+            this.btnDevolverPelicula.UseVisualStyleBackColor = true;
+            this.btnDevolverPelicula.Click += new System.EventHandler(this.btnDevolverPelicula_Click);
+            // 
+            // label8
+            // 
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(6, 269);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(210, 21);
+            this.label8.TabIndex = 8;
+            this.label8.Text = "Cliente y Pelicula";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label9
+            // 
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(239, 269);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(210, 21);
+            this.label9.TabIndex = 9;
+            this.label9.Text = "Devolucion Máxima";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // VentanaInicio
             // 
@@ -333,6 +393,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panelInfoPeli.ResumeLayout(false);
             this.panelAlquileres.ResumeLayout(false);
+            this.panelAlquileres.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAlquileres)).EndInit();
             this.ResumeLayout(false);
 
@@ -365,5 +426,10 @@
         private System.Windows.Forms.Button cerrarAlquileres;
         private System.Windows.Forms.Label labelAlquileres;
         private System.Windows.Forms.DataGridView dataGridViewAlquileres;
+        private System.Windows.Forms.TextBox datosClienteAlquiler;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button btnDevolverPelicula;
+        private System.Windows.Forms.TextBox fechaMaximaDevolucion;
     }
 }
