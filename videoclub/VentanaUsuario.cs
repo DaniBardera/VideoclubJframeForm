@@ -19,93 +19,95 @@ namespace videoclub
             datosUsuario.Visible = false;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnBuscar_Click(object sender, EventArgs e)
         {
-
-
-
-            datosUsuario.Visible = true;
-
-
-            //Actualizamos datos de la peli
-            string datos = tb_dni.Text.ToString();
+            //Cogemos el DNI que hemos metido en la barra de busqueda
+            string DNI = textBoxDNI.Text.ToString();
 
             //Query para los datos
             MySqlConnection conexion = new ConexionBBDD().conecta();
 
-            MySqlCommand comando = new MySqlCommand("SELECT * FROM nuevos_usuarios WHERE nuevos_usuarios.Dni = '" + tb_dni.Text + "';", conexion);
+            MySqlCommand comando = new MySqlCommand("SELECT * FROM nuevos_usuarios WHERE Dni = '" + DNI + "';", conexion);
 
             // Con este comando mandamos ejecutar la consulta anterior
             MySqlDataReader resultado = comando.ExecuteReader();
 
             if (resultado.Read())
             {
+                errorCliente.Visible = false;
+                datosUsuario.Visible = true;
                 //Comprobamos los datos y si los tenemos los introducimos en sus lugares
-                //Si no hay nulos en la 1ª columna, saco el nombre
+                //Si no hay nulos en la 2ª columna, saco el nombre
                 if (!resultado.IsDBNull(1))
                 {
-                    nombre_usu.Text = resultado.GetString("Nombre");
+                    lblNombre.Text = resultado.GetString("Nombre");
                 }
                 else
                 {
-                    nombre_usu.Text = "Dato desconocido";
+                    lblNombre.Text = "Dato desconocido";
                 }
-                //Si no hay nulos en la 2ª columna, saco el año de publicacion
+                //Si no hay nulos en la 3ª columna, saco el apellido
                 if (!resultado.IsDBNull(2))
                 {
-                    apellido_usu.Text = resultado.GetString("Apellido");
+                    lblApellidos.Text = resultado.GetString("Apellido");
                 }
                 else
                 {
-                    apellido_usu.Text = "Dato desconocido";
+                    lblApellidos.Text = "Dato desconocido";
                 }
-                //Si no hay nulos en la 3ª columna, saco el ranking de la peli
+                //Si no hay nulos en la 4ª columna, saco la fecha de nacimiento
                 if (!resultado.IsDBNull(3))
                 {
-                    direccion_usu.Text = resultado.GetString("Direccion");
+                    lblFechaNacimiento.Text = resultado.GetString("Fecha_Nac");
                 }
                 else
                 {
-                    direccion_usu.Text = "Dato desconocido";
+                    lblFechaNacimiento.Text = "Dato desconocido";
                 }
-                //Si no hay nulos en la 4ª columna, saco el stock de la peli
-                if (!resultado.IsDBNull(4))
+                //Si no hay nulos en la 5ª columna, saco el email
+                if (!resultado.IsDBNull(5))
                 {
-                    telefono_usu.Text = resultado.GetString("Telefono");
-
+                    lblEmail.Text = resultado.GetString("Email");
                 }
                 else
                 {
-                    telefono_usu.Text = "Dato desconocido";
-
+                    lblEmail.Text = "Dato desconocido";
                 }
-                if (!resultado.IsDBNull(4))
+                //Si no hay nulos en la 6ª columna, saco la direccion
+                if (!resultado.IsDBNull(6))
                 {
-                    sexo_usu.Text = resultado.GetString("Sexo");
-
+                    lblDireccion.Text = resultado.GetString("Direccion");
                 }
                 else
                 {
-                    sexo_usu.Text = "Dato desconocido";
-
+                    lblDireccion.Text = "Dato desconocido";
                 }
-                if (!resultado.IsDBNull(4))
+                //Si no hay nulos en la 7ª columna, saco el super nickname
+                if (!resultado.IsDBNull(7))
                 {
-                    email_usu.Text = resultado.GetString("Email");
-
+                    lblUsuario.Text = resultado.GetString("NickName");
                 }
                 else
                 {
-                    email_usu.Text = "Dato desconocido";
-
+                    lblUsuario.Text = "Dato desconocido";
                 }
 
-
+            }
+            else
+            {
+                errorCliente.Visible = true;
+                datosUsuario.Visible = false;
+                textBoxDNI.Focus();
+                textBoxDNI.Text = "";
             }
 
             //Cerramos conexion
             conexion.Close();
+        }
 
+        private void cerrarBtn_Click(object sender, EventArgs e)
+        {
+            this.Visible = false;
         }
     }
 }
