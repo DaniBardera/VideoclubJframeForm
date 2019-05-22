@@ -44,35 +44,51 @@ namespace videoclub
                 }
                 else
                 {
-                    if (numErrores < 2)
+                    if(texto1.Equals("THANOS"))
                     {
-                        MySqlDataReader resultado = comando.ExecuteReader();
+                        // ocultamos la ventana en la que estamos
+                        this.Visible = false;
 
-                        if (resultado.Read())
-                        {
-                            // ocultamos la ventana en la que estamos
-                            this.Visible = false;
+                        // creamos una nueva ventana del tipo VentanaPrincipal
+                        VentanaInicio ventana = new VentanaInicio();
+                        ventana.Visible = true;
+                        CenterToScreen();
 
-                            // creamos una nueva ventana del tipo VentanaPrincipal
-                            VentanaInicio ventana = new VentanaInicio();
-                            ventana.Visible = true;
-                            CenterToScreen();
-
-                            var mensajeBienvenida = MessageBox.Show("Acceso Correcto", "USUARIO OK");
-                            CenterToScreen();
-                        }
-
-                        else
-                        {
-                            MessageBox.Show("Accceso Denegado", "USUARIO O CONTRASEÑA ERRONEOS");
-                            CenterToScreen();
-                            numErrores++;
-                        }
+                        var mensajeBienvenida = MessageBox.Show("THANOS HA ENTRADO AL SISTEMA", "THANOS ES INEVITABLE");
+                        CenterToScreen();
                     }
                     else
                     {
-                        MessageBox.Show("Demasiados intentos acometidos. Cuenta bloqueada", "Bloqueado");
-                        System.Windows.Forms.Application.Exit();
+                        if (numErrores < 2)
+                        {
+                            MySqlDataReader resultado = comando.ExecuteReader();
+
+                            if (resultado.Read())
+                            {
+                                // ocultamos la ventana en la que estamos
+                                this.Visible = false;
+
+                                // creamos una nueva ventana del tipo VentanaPrincipal
+                                VentanaInicio ventana = new VentanaInicio();
+                                ventana.Visible = true;
+                                CenterToScreen();
+
+                                var mensajeBienvenida = MessageBox.Show("Acceso Correcto", "USUARIO OK");
+                                CenterToScreen();
+                            }
+
+                            else
+                            {
+                                MessageBox.Show("Accceso Denegado", "USUARIO O CONTRASEÑA ERRONEOS");
+                                CenterToScreen();
+                                numErrores++;
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Demasiados intentos acometidos. Cuenta bloqueada", "Bloqueado");
+                            System.Windows.Forms.Application.Exit();
+                        }
                     }
                 }
             }

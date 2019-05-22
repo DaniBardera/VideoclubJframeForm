@@ -48,34 +48,40 @@
             this.label9 = new System.Windows.Forms.Label();
             this.Dni = new System.Windows.Forms.TextBox();
             this.cancelarBtn = new System.Windows.Forms.Button();
-            this.Fecha_Nac = new System.Windows.Forms.TextBox();
+            this.dniRegistrado = new System.Windows.Forms.Label();
+            this.usuarioRegistrado = new System.Windows.Forms.Label();
+            this.emailRegistrado = new System.Windows.Forms.Label();
+            this.fechaNacimiento = new System.Windows.Forms.DateTimePicker();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.SuspendLayout();
             // 
             // Nombre
             // 
-            this.Nombre.Location = new System.Drawing.Point(137, 208);
+            this.Nombre.Location = new System.Drawing.Point(137, 231);
             this.Nombre.Name = "Nombre";
             this.Nombre.Size = new System.Drawing.Size(199, 20);
-            this.Nombre.TabIndex = 1;
+            this.Nombre.TabIndex = 2;
             // 
             // NickName
             // 
-            this.NickName.Location = new System.Drawing.Point(137, 323);
+            this.NickName.Location = new System.Drawing.Point(137, 377);
             this.NickName.Name = "NickName";
             this.NickName.Size = new System.Drawing.Size(199, 20);
-            this.NickName.TabIndex = 2;
+            this.NickName.TabIndex = 4;
+            this.NickName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.NickName_KeyUp);
+            this.NickName.Leave += new System.EventHandler(this.NickName_Leave);
             // 
             // Direccion
             // 
             this.Direccion.Location = new System.Drawing.Point(526, 161);
             this.Direccion.Name = "Direccion";
             this.Direccion.Size = new System.Drawing.Size(199, 20);
-            this.Direccion.TabIndex = 3;
+            this.Direccion.TabIndex = 5;
             // 
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(59, 206);
+            this.label1.Location = new System.Drawing.Point(59, 229);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(72, 20);
             this.label1.TabIndex = 4;
@@ -85,7 +91,7 @@
             // label2
             // 
             this.label2.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(56, 260);
+            this.label2.Location = new System.Drawing.Point(56, 300);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(75, 23);
             this.label2.TabIndex = 5;
@@ -94,44 +100,48 @@
             // 
             // Apellidos
             // 
-            this.Apellidos.Location = new System.Drawing.Point(137, 260);
+            this.Apellidos.Location = new System.Drawing.Point(137, 300);
             this.Apellidos.Name = "Apellidos";
             this.Apellidos.Size = new System.Drawing.Size(199, 20);
-            this.Apellidos.TabIndex = 6;
+            this.Apellidos.TabIndex = 3;
             // 
             // Email
             // 
-            this.Email.Location = new System.Drawing.Point(526, 321);
+            this.Email.Location = new System.Drawing.Point(526, 375);
             this.Email.Name = "Email";
             this.Email.Size = new System.Drawing.Size(199, 20);
             this.Email.TabIndex = 9;
+            this.Email.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Email_KeyUp);
+            this.Email.Leave += new System.EventHandler(this.Email_Leave);
             // 
             // Hombre
             // 
             this.Hombre.AutoSize = true;
             this.Hombre.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Hombre.Location = new System.Drawing.Point(526, 258);
+            this.Hombre.Location = new System.Drawing.Point(526, 298);
             this.Hombre.Name = "Hombre";
             this.Hombre.Size = new System.Drawing.Size(76, 24);
-            this.Hombre.TabIndex = 10;
+            this.Hombre.TabIndex = 7;
             this.Hombre.Text = "Hombre";
             this.Hombre.UseVisualStyleBackColor = true;
+            this.Hombre.CheckedChanged += new System.EventHandler(this.Hombre_CheckedChanged);
             // 
             // Mujer
             // 
             this.Mujer.AutoSize = true;
             this.Mujer.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Mujer.Location = new System.Drawing.Point(664, 258);
+            this.Mujer.Location = new System.Drawing.Point(664, 298);
             this.Mujer.Name = "Mujer";
             this.Mujer.Size = new System.Drawing.Size(61, 24);
-            this.Mujer.TabIndex = 11;
+            this.Mujer.TabIndex = 8;
             this.Mujer.Text = "Mujer";
             this.Mujer.UseVisualStyleBackColor = true;
+            this.Mujer.CheckedChanged += new System.EventHandler(this.Mujer_CheckedChanged);
             // 
             // label3
             // 
             this.label3.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(403, 208);
+            this.label3.Location = new System.Drawing.Point(403, 231);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(117, 20);
             this.label3.TabIndex = 12;
@@ -141,7 +151,7 @@
             // label5
             // 
             this.label5.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(56, 323);
+            this.label5.Location = new System.Drawing.Point(56, 377);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(75, 20);
             this.label5.TabIndex = 14;
@@ -161,7 +171,7 @@
             // label7
             // 
             this.label7.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(403, 260);
+            this.label7.Location = new System.Drawing.Point(403, 300);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(113, 20);
             this.label7.TabIndex = 16;
@@ -171,7 +181,7 @@
             // label8
             // 
             this.label8.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(405, 321);
+            this.label8.Location = new System.Drawing.Point(405, 375);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(115, 20);
             this.label8.TabIndex = 17;
@@ -188,10 +198,10 @@
             // 
             // BotonAlta
             // 
-            this.BotonAlta.Location = new System.Drawing.Point(137, 376);
+            this.BotonAlta.Location = new System.Drawing.Point(175, 453);
             this.BotonAlta.Name = "BotonAlta";
-            this.BotonAlta.Size = new System.Drawing.Size(199, 37);
-            this.BotonAlta.TabIndex = 19;
+            this.BotonAlta.Size = new System.Drawing.Size(198, 37);
+            this.BotonAlta.TabIndex = 10;
             this.BotonAlta.Text = "Dar de Alta";
             this.BotonAlta.UseVisualStyleBackColor = true;
             this.BotonAlta.Click += new System.EventHandler(this.BotonAlta_Click);
@@ -211,32 +221,76 @@
             this.Dni.Location = new System.Drawing.Point(137, 161);
             this.Dni.Name = "Dni";
             this.Dni.Size = new System.Drawing.Size(199, 20);
-            this.Dni.TabIndex = 21;
+            this.Dni.TabIndex = 1;
+            this.Dni.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Dni_KeyUp);
+            this.Dni.Leave += new System.EventHandler(this.Dni_Leave);
             // 
             // cancelarBtn
             // 
-            this.cancelarBtn.Location = new System.Drawing.Point(526, 374);
+            this.cancelarBtn.Location = new System.Drawing.Point(439, 453);
             this.cancelarBtn.Name = "cancelarBtn";
             this.cancelarBtn.Size = new System.Drawing.Size(199, 37);
-            this.cancelarBtn.TabIndex = 22;
+            this.cancelarBtn.TabIndex = 11;
             this.cancelarBtn.Text = "Cancelar";
             this.cancelarBtn.UseVisualStyleBackColor = true;
             this.cancelarBtn.Click += new System.EventHandler(this.cancelarBtn_Click);
             // 
-            // Fecha_Nac
+            // dniRegistrado
             // 
-            this.Fecha_Nac.Location = new System.Drawing.Point(526, 210);
-            this.Fecha_Nac.Name = "Fecha_Nac";
-            this.Fecha_Nac.Size = new System.Drawing.Size(199, 20);
-            this.Fecha_Nac.TabIndex = 23;
+            this.dniRegistrado.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dniRegistrado.ForeColor = System.Drawing.Color.Red;
+            this.dniRegistrado.Location = new System.Drawing.Point(137, 184);
+            this.dniRegistrado.Name = "dniRegistrado";
+            this.dniRegistrado.Size = new System.Drawing.Size(199, 23);
+            this.dniRegistrado.TabIndex = 25;
+            this.dniRegistrado.Text = "DNI REGISTRADO";
+            this.dniRegistrado.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // usuarioRegistrado
+            // 
+            this.usuarioRegistrado.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.usuarioRegistrado.ForeColor = System.Drawing.Color.Red;
+            this.usuarioRegistrado.Location = new System.Drawing.Point(137, 400);
+            this.usuarioRegistrado.Name = "usuarioRegistrado";
+            this.usuarioRegistrado.Size = new System.Drawing.Size(199, 23);
+            this.usuarioRegistrado.TabIndex = 26;
+            this.usuarioRegistrado.Text = "USUARIO REGISTRADO";
+            this.usuarioRegistrado.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // emailRegistrado
+            // 
+            this.emailRegistrado.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.emailRegistrado.ForeColor = System.Drawing.Color.Red;
+            this.emailRegistrado.Location = new System.Drawing.Point(526, 398);
+            this.emailRegistrado.Name = "emailRegistrado";
+            this.emailRegistrado.Size = new System.Drawing.Size(199, 23);
+            this.emailRegistrado.TabIndex = 27;
+            this.emailRegistrado.Text = "EMAIL REGISTRADO";
+            this.emailRegistrado.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // fechaNacimiento
+            // 
+            this.fechaNacimiento.Location = new System.Drawing.Point(525, 230);
+            this.fechaNacimiento.MaxDate = new System.DateTime(2019, 12, 25, 23, 59, 59, 0);
+            this.fechaNacimiento.MinDate = new System.DateTime(1890, 1, 1, 0, 0, 0, 0);
+            this.fechaNacimiento.Name = "fechaNacimiento";
+            this.fechaNacimiento.Size = new System.Drawing.Size(200, 20);
+            this.fechaNacimiento.TabIndex = 6;
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "dialogoImagen";
             // 
             // VentanaNuevoUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.Fecha_Nac);
+            this.ClientSize = new System.Drawing.Size(800, 544);
+            this.Controls.Add(this.fechaNacimiento);
+            this.Controls.Add(this.emailRegistrado);
+            this.Controls.Add(this.usuarioRegistrado);
+            this.Controls.Add(this.dniRegistrado);
             this.Controls.Add(this.cancelarBtn);
             this.Controls.Add(this.Dni);
             this.Controls.Add(this.label9);
@@ -285,6 +339,10 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox Dni;
         private System.Windows.Forms.Button cancelarBtn;
-        private System.Windows.Forms.TextBox Fecha_Nac;
+        private System.Windows.Forms.Label dniRegistrado;
+        private System.Windows.Forms.Label usuarioRegistrado;
+        private System.Windows.Forms.Label emailRegistrado;
+        private System.Windows.Forms.DateTimePicker fechaNacimiento;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }

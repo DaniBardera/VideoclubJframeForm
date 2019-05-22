@@ -97,11 +97,20 @@ namespace videoclub
 
                 if (!resultado.IsDBNull(8))
                 {
-                    MisDatos = (byte[])resultado["Foto"];
+                    //MisDatos = (byte[])resultado["Foto"];
+                    //foto.SizeMode = PictureBoxSizeMode.StretchImage;
+                    //MemoryStream ms = new MemoryStream(MisDatos);
+                    //foto.Image = Image.FromStream(ms);
+
+                    string base64String = resultado.GetString("Foto");
+
+                    byte[] imageBytes = Convert.FromBase64String(base64String);                    
+                    MemoryStream ms = new MemoryStream(imageBytes, 0, imageBytes.Length);
+                    ms.Write(imageBytes, 0, imageBytes.Length);
+                    System.Drawing.Image image = System.Drawing.Image.FromStream(ms, true);
                     foto.SizeMode = PictureBoxSizeMode.StretchImage;
-                    MemoryStream ms = new MemoryStream(MisDatos);
-                    foto.Image = Image.FromStream(ms);
-                   
+                    foto.Image = image;
+
                 }
                 else
                 {
