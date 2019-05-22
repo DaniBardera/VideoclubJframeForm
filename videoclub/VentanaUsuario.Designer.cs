@@ -62,9 +62,9 @@
             // 
             // foto
             // 
-            this.foto.Location = new System.Drawing.Point(181, 12);
+            this.foto.Location = new System.Drawing.Point(159, 12);
             this.foto.Name = "foto";
-            this.foto.Size = new System.Drawing.Size(97, 101);
+            this.foto.Size = new System.Drawing.Size(119, 101);
             this.foto.TabIndex = 4;
             this.foto.TabStop = false;
             // 

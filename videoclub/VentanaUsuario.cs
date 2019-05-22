@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,6 +32,8 @@ namespace videoclub
 
             // Con este comando mandamos ejecutar la consulta anterior
             MySqlDataReader resultado = comando.ExecuteReader();
+            byte[] MisDatos = new byte[0];
+
 
             if (resultado.Read())
             {
@@ -91,6 +94,20 @@ namespace videoclub
                 {
                     lblUsuario.Text = "Dato desconocido";
                 }
+
+                if (!resultado.IsDBNull(8))
+                {
+                    MisDatos = (byte[])resultado["Foto"];
+                    foto.SizeMode = PictureBoxSizeMode.StretchImage;
+                    MemoryStream ms = new MemoryStream(MisDatos);
+                    foto.Image = Image.FromStream(ms);
+                   
+                }
+                else
+                {
+                    lblUsuario.Text = "Dato desconocido";
+                }
+
 
             }
             else

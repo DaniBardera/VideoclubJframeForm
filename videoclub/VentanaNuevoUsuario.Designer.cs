@@ -48,7 +48,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.Dni = new System.Windows.Forms.TextBox();
             this.cancelarBtn = new System.Windows.Forms.Button();
-            this.fechaNacimiento = new System.Windows.Forms.DateTimePicker();
+            this.Fecha_Nac = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // Nombre
@@ -223,12 +223,12 @@
             this.cancelarBtn.UseVisualStyleBackColor = true;
             this.cancelarBtn.Click += new System.EventHandler(this.cancelarBtn_Click);
             // 
-            // fechaNacimiento
+            // Fecha_Nac
             // 
-            this.fechaNacimiento.Location = new System.Drawing.Point(526, 208);
-            this.fechaNacimiento.Name = "fechaNacimiento";
-            this.fechaNacimiento.Size = new System.Drawing.Size(199, 20);
-            this.fechaNacimiento.TabIndex = 23;
+            this.Fecha_Nac.Location = new System.Drawing.Point(526, 210);
+            this.Fecha_Nac.Name = "Fecha_Nac";
+            this.Fecha_Nac.Size = new System.Drawing.Size(199, 20);
+            this.Fecha_Nac.TabIndex = 23;
             // 
             // VentanaNuevoUsuario
             // 
@@ -236,7 +236,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.fechaNacimiento);
+            this.Controls.Add(this.Fecha_Nac);
             this.Controls.Add(this.cancelarBtn);
             this.Controls.Add(this.Dni);
             this.Controls.Add(this.label9);
@@ -285,6 +285,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox Dni;
         private System.Windows.Forms.Button cancelarBtn;
-        private System.Windows.Forms.DateTimePicker fechaNacimiento;
+        private System.Windows.Forms.TextBox Fecha_Nac;
     }
 }
